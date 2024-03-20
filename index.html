@@ -98,7 +98,7 @@
         override_safe_mode: true,
         use_webaudio: false,
         on_finish: function() {
-            window.location.href = "https://umanitobapsych.sona-systems.com/webstudy_credit.aspx?experiment_id=1303&credit_token=a035fd3a62b541dcae118ab791f90307&survey_code="+SONA_ID;
+            window.location.href = "https://umanitobapsych.sona-systems.com/webstudy_credit.aspx?experiment_id=XXXXXXX&credit_token=XXXXXXX&survey_code="+SONA_ID;
             //to display data at the end:
             jsPsych.data.displayData('json')
         },
@@ -262,7 +262,7 @@
 
     var debrief = {
         type: jsPsychExternalHtml,
-        url: "forms/debrief.html",
+        url: "forms/debriefing.html",
         data: {"phase": "Debrief"}
     };
  
