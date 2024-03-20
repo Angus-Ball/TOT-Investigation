@@ -100,7 +100,7 @@
         on_finish: function() {
             window.location.href = "https://umanitobapsych.sona-systems.com/webstudy_credit.aspx?experiment_id=XXXXXXX&credit_token=XXXXXXX&survey_code="+SONA_ID;
             //to display data at the end:
-            jsPsych.data.displayData('json')
+            //jsPsych.data.displayData('json')
         },
     });
      
@@ -268,14 +268,14 @@
  
     var timeline = [];
 
-    timeline.push(consent);           // needs to be tested online with SONA ID
-    timeline.push(no_consent);            
-    timeline.push(welcome);             // Working
-    timeline.push(instructions);        // Working
-    timeline.push(study_phase);         // Working
-    timeline.push(test_instructions);   // Working
-    timeline.push(test_phase);
-    timeline.push(debrief);           // needs to be tested online
+    timeline.push(consent);            
+    timeline.push(no_consent);         
+    timeline.push(welcome);            
+    timeline.push(instructions);       
+    timeline.push(study_phase);        
+    timeline.push(test_instructions);  
+    timeline.push(test_phase);         
+    timeline.push(debrief);            
  
     jsPsych.run(timeline)
  </script>
