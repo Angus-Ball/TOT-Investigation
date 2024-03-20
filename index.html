@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>Tip of the Tongue Study</title>
+    <meta name="author" content="Angus Ball"/>
+    <meta name="description" content="A word recall experiment"/>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <script src="jspsych/jspsych.js"></script>
+    <script src="jspsych/plugin-external-html.js"></script>
+    <script src="jspsych/plugin-html-keyboard-response.js"></script>
+    <script src="jspsych/plugin-survey-text.js"></script>
+    <script src="jspsych/plugin-html-slider-response.js"></script>
+    <script src="jspsych/plugin-html-button-response.js"></script>
+    <script src='stimuli/targets.js'></script>
+    <script src='stimuli/test_phase.js'></script>
+    <link href="jspsych/jspsych.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body></body>
+
+<!-- Allow remote storage on Google Firebase -->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js"></script>
+
+
+<!-- enter some javascript code -->
+<script type="text/javascript">
+
+   ////// Firebase set up //////
+   
+   const firebaseConfig = {
+      apiKey: "AIzaSyB6KWariXwI1KTCAKm41E81arH7UA4xIbY",
+      authDomain: "tot-study.firebaseapp.com",
+      databaseURL: "https://tot-study-default-rtdb.firebaseio.com",
+      projectId: "tot-study",
+      storageBucket: "tot-study.appspot.com",
+      messagingSenderID: "447474888196",
+      appId: "1:447474888196:web:105f58b0b32d7e6e8d0f51",
+      measurementID: "G-C1Z66NMLP5"
+   };
+
+   // Initialize Firebase
+   firebase.initializeApp(firebaseConfig);
+   firebase.analytics();
+   /*
+   const app = initializeApp(firebaseConfig);
+   const analytics = getAnalytics(app);
+   */
+   // Get a reference to the database service
+   var database = firebase.database();
+
+   // login anonymous user
+   firebase.auth().signInAnonymously().catch(function(error) {
+      // error handling
+      var errorCode = error.code;
+      var errorMessage = error.message;
+   })
+    
+   // check user can sign on to firebase
+   firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+         // user is signed in
+         var isAnonymous = user.isAnonymous;
+         var uid = user.uid;
+      } else {
+      // user is signed out
+      }
+   })
+</script>
+
+
+
+<script>
+   // Experiment parameters
+   var subject_id = jsPsych.randomization.randomID(15);
+   // get SONA ID
+   var SONA_ID = getUrlParam('id','Empty');
+
+   function getUrlVars() {
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(m,key,value) {
+         vars[key] = value;
+      });
+      return vars;
+   };
+
+   jsPsych.data.addProperties({
+      subject: subject_id
+   });
+</script>
+
+
+<!-- Procedure Begins-->
+<script>
+    const jsPsych = initJsPsych({
+        override_safe_mode: true,
+        use_webaudio: false,
+        on_finish: function() {
+            window.location.href = "https://umanitobapsych.sona-systems.com/webstudy_credit.aspx?experiment_id=1303&credit_token=a035fd3a62b541dcae118ab791f90307&survey_code="+SONA_ID;
+            //to display data at the end:
+            jsPsych.data.displayData('json')
+        },
+    });
+     
+    // to check for consent
+    var consent_check = false;
+ 
+    var consent = {
+        type: jsPsychExternalHtml,
+        url: "forms/consent.html",
+        cont_btn: "consent-btns",
+        data: {"phase":"Consent"}
+    };
+ 
+    var no_consent = {
+        timeline: [
+         {
+            type: jsPsychExternalHtml,
+            url: "forms/no_consent_deb.html",
+            data: {"phase": "No_consent"}
+         }
+        ],
+        conditional_function: function(data){
+         if(consent_check == false){
+             return true
+          }else{
+             return false
+          }
+       }
+    };
+ 
+    var welcome = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: "Welcome to the experiment!<br><br><b>Press any key to view the instructions.</b>",
+      choices: 'ALL_KEYS'
+   };
+ 
+    var instructions = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: "You will be presented with some words one by one to study for only a moment each.<br>Pay attention because you will be asked to recall the words afterwards.",
+      prompt: "<br><b>Press the space bar when you are ready to proceed to the study phase.</b>",
+      choices: " "
+   };
+    
+    ////// STUDY PHASE //////
+
+    var study_phase = {
+        timeline: [
+
+          //Fixation Cross
+          {
+            type: jsPsychHtmlKeyboardResponse,
+            stimulus: '+',
+            choices: "NO_KEYS", 
+            trial_duration: 750
+          },
+
+         //Target Presentation
+          {
+            type: jsPsychHtmlKeyboardResponse,
+            stimulus: jsPsych.timelineVariable('target'),
+            choices: "NO_KEYS",
+            trial_duration: 1000
+          }
+        ],
+ 
+        //Study List
+        timeline_variables: targets,
+        randomize_order: true
+    };
+ 
+    var test_instructions = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: "In this next phase you will attempt to recall one of the words you just viewed based on a short clue.<br><br>When you recall it, you will have a chance to type the word before proceeding to the next trial.<br><br>When you do not recall, you will indicate whether you feel it is on the tip of your tongue or truly forgotten.<br>You will then try to choose the most similar-feeling word from a short list.",
+      prompt: "<br><b>Press the space bar when you are ready to proceed to the test phase.</b>",
+      choices: " ",
+   };
+
+    ////// SHUFFLE 4AFC BUTTONS //////
+
+    // Shuffle function
+    function shuffle_variable(testwords_list){
+        for(i=0; i<testwords_list.length; i++){ //for every trial, i++ means i+1
+            W1 = testwords_list[i].word0; // save each word
+            W2 = testwords_list[i].word1;
+            W3 = testwords_list[i].word2;
+            W4 = testwords_list[i].word3;
+            WL = [W1, W2, W3, W4];
+            D1 = testwords_list[i].data0;
+            D2 = testwords_list[i].data1;
+            D3 = testwords_list[i].data2;
+            D4 = testwords_list[i].data3;
+            DL = [D1, D2, D3, D4];
+            My_ord = jsPsych.randomization.repeat([0,1,2,3],1); // randomize the list/array
+            
+            testwords_list[i].word0 = WL[My_ord[0]];
+            testwords_list[i].word1 = WL[My_ord[1]];
+            testwords_list[i].word2 = WL[My_ord[2]];
+            testwords_list[i].word3 = WL[My_ord[3]];
+            testwords_list[i].data0 = DL[My_ord[0]];
+            testwords_list[i].data1 = DL[My_ord[1]];
+            testwords_list[i].data2 = DL[My_ord[2]];
+            testwords_list[i].data3 = DL[My_ord[3]]
+        }
+        return(testwords_list) // return that list to the variable
+    };
+
+    testwords = shuffle_variable(testwords);
+    console.table(testwords);
+
+    ////// TEST PHASE //////
+
+    var test_phase = {
+        timeline: [
+            {
+                type: jsPsychSurveyText,
+                questions: jsPsych.timelineVariable('question'),
+                preamble: "<b>If you can recall which word from the list matches the following clue, type it below.<br/>If you cannot remember the word, click continue.</b>"
+            },
+
+            // Conditional block based on participant response
+            {
+              timeline: [
+                {
+                  conditional_function: function () {
+                    // Check if the participant recalled the word
+                    var lastTrialData = jsPsych.data.getLastTrialData().values()[0];
+                    var recalled_word = lastTrialData.response.recalled_word;
+                
+                    return recalled_word === '';
+                  },
+                  timeline: [
+                    //slider responses
+                        {
+                            type: jsPsychHtmlSliderResponse,
+                            stimulus: jsPsych.timelineVariable('cue'),
+                            labels: ['I do not know it at all', 'I am certain I know it but it is on the tip of my tongue'],
+                            slider_width: 700,
+                            slider_start: 50,
+                            require_movement: true,
+                            data: {phase: 'slider_response'}, // Additional data if needed
+                        },
+
+                    // button responses 
+                        {
+                            type: jsPsychHtmlButtonResponse,
+                            stimulus: jsPsych.timelineVariable('cue'),
+                            choices: [jsPsych.timelineVariable('word0'), jsPsych.timelineVariable('word1'), jsPsych.timelineVariable('word2'), jsPsych.timelineVariable('word3')],
+                            data: {phase: 'button_response'}, // Additional data if needed
+                            prompt: "<br><b>Choose whichever word feels closest to what you were trying to recall</b>"
+                        },
+                  ],
+                },
+              ],
+            },        
+        ], 
+        timeline_variables: testwords,
+        randomize_order: true
+    };
+
+    var debrief = {
+        type: jsPsychExternalHtml,
+        url: "forms/debrief.html",
+        data: {"phase": "Debrief"}
+    };
+ 
+    var timeline = [];
+
+    timeline.push(consent);           // needs to be tested online with SONA ID
+    timeline.push(no_consent);            
+    timeline.push(welcome);             // Working
+    timeline.push(instructions);        // Working
+    timeline.push(study_phase);         // Working
+    timeline.push(test_instructions);   // Working
+    timeline.push(test_phase);
+    timeline.push(debrief);           // needs to be tested online
+ 
+    jsPsych.run(timeline)
+ </script>
+</html>
