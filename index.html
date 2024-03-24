@@ -70,8 +70,6 @@
    })
 </script>
 
-
-
 <script>
    // Experiment parameters
    var subject_id = jsPsych.randomization.randomID(15);
@@ -91,7 +89,6 @@
    });
 </script>
 
-
 <!-- Procedure Begins-->
 <script>
     const jsPsych = initJsPsych({
@@ -100,7 +97,7 @@
         on_finish: function() {
             window.location.href = "https://umanitobapsych.sona-systems.com/webstudy_credit.aspx?experiment_id=1303&credit_token=a035fd3a62b541dcae118ab791f90307&survey_code="+SONA_ID;
             //to display data at the end:
-            jsPsych.data.displayData('json')
+            //jsPsych.data.displayData('json')
         },
     });
      
@@ -275,7 +272,7 @@
     timeline.push(study_phase);         
     timeline.push(test_instructions);   
     timeline.push(test_phase);
-    //timeline.push(debrief);           
+    timeline.push(debrief);           
  
     jsPsych.run(timeline)
  </script>
