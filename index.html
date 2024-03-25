@@ -70,6 +70,16 @@
 </script>
 
 <script>
+   const jsPsych = initJsPsych({
+      override_safe_mode: true,
+      use_webaudio: false,
+      on_finish: function() {
+         window.location.href = "https://umanitobapsych.sona-systems.com/webstudy_credit.aspx?experiment_id=XXXXXXX&credit_token=XXXXXXX&survey_code="+SONA_ID;
+         //to display data at the end:
+         //jsPsych.data.displayData('json')
+      }
+   });
+
    // Experiment parameters
    var subject_id = jsPsych.randomization.randomID(15);
    // get SONA ID
@@ -90,7 +100,7 @@
 
 <!-- Procedure Begins-->
 <script>
-    const jsPsych = initJsPsych({
+    /*const jsPsych = initJsPsych({
         override_safe_mode: true,
         use_webaudio: false,
         on_finish: function() {
@@ -99,7 +109,8 @@
             //jsPsych.data.displayData('json')
         },
     });
-     
+    */
+
     // to check for consent
     var consent_check = false;
  
