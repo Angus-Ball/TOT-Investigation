@@ -74,13 +74,18 @@
    const jsPsych = initJsPsych({
       override_safe_mode: true,
       use_webaudio: false,
+      on_finish: function(){
+         firebase.database().ref(subject_id).set({
+            data: jsPsych.data.get().values()
+         })
+      },
       on_finish: function() {
          window.location.href = "https://umanitobapsych.sona-systems.com/webstudy_credit.aspx?experiment_id=XXXXXXX&credit_token=XXXXXXX&survey_code="+SONA_ID;
          //to display data at the end:
          //jsPsych.data.displayData('json')
       }
    });
-   
+
    // Experiment parameters
    var subject_id = jsPsych.randomization.randomID(15);
    // get SONA ID
@@ -223,7 +228,8 @@
             {
                 type: jsPsychSurveyText,
                 questions: jsPsych.timelineVariable('question'),
-                preamble: "<b>If you can recall which word from the list matches the following clue, type it below.<br/>If you cannot remember the word, click continue.</b>"
+                preamble: "<b>If you can recall which word from the list matches the following clue, type it below.<br/>If you cannot remember the word, click continue.</b>",
+                data: {phase: 'recall'}
             },
 
             // Conditional block based on participant response
@@ -271,28 +277,9 @@
         url: "forms/debriefing.html",
         data: {"phase": "Debrief"}
     };
-
-    var send_data = {
-      on_finish: function(){
-         firebase.database().ref(subject_id).set({
-            data: jsPsych.data.get().values()
-         })
-      }
-    };
  
-    var timeline = [
-      consent,
-      no_consent,
-      welcome,
-      instructions,
-      study_phase,
-      test_instructions,
-      test_phase,
-      debrief,
-      send_data
-    ];
+    var timeline = [];
 
-    /*
     timeline.push(consent);            
     timeline.push(no_consent);         
     timeline.push(welcome);            
@@ -302,7 +289,7 @@
     timeline.push(test_phase);         
     timeline.push(debrief);            
     timeline.push(send_data);
-    */
+    
     jsPsych.run(timeline)
  </script>
 </html>
