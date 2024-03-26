@@ -280,8 +280,19 @@
       }
     };
  
-    var timeline = [];
+    var timeline = [
+      consent,
+      no_consent,
+      welcome,
+      instructions,
+      study_phase,
+      test_instructions,
+      test_phase,
+      debrief,
+      send_data
+    ];
 
+    /*
     timeline.push(consent);            
     timeline.push(no_consent);         
     timeline.push(welcome);            
@@ -291,7 +302,7 @@
     timeline.push(test_phase);         
     timeline.push(debrief);            
     timeline.push(send_data);
- 
+    */
     jsPsych.run(timeline)
  </script>
 </html>
