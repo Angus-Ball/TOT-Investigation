@@ -250,7 +250,7 @@
                             type: jsPsychHtmlButtonResponse,
                             stimulus: jsPsych.timelineVariable('cue'),
                             choices: [jsPsych.timelineVariable('word0'), jsPsych.timelineVariable('word1'), jsPsych.timelineVariable('word2'), jsPsych.timelineVariable('word3')],
-                            data: {phase: 'button_response'}, // Additional data if needed
+                            data: {phase: 'button_response', response_key: testwords_list[i]}, // Additional data if needed
                             prompt: "<br><b>Choose whichever word feels closest to what you were trying to recall</b>"
                         },
                   ],
