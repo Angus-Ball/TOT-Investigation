@@ -20,7 +20,7 @@
 
 <!-- Allow remote storage on Google Firebase -->
 <!-- The core Firebase JS SDK is always required and must be listed first -->
-
+<!--
 <script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js">
    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
 </script>
@@ -30,8 +30,11 @@
 </script>
 <script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"></script>
 <script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js"></script>
-
+-->
 <!-- enter some javascript code -->
+
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js"></script>
 
 <script>
    ////// Firebase set up //////
@@ -48,13 +51,21 @@
    };
    
    // Initialize Firebase
-   
+   firebase.initializeApp(firebaseConfig);
+   /*
    const app = initializeApp(firebaseConfig);
    const analytics = getAnalytics(app);
-   
+   */
+
    // Get a reference to the database service
    var database = firebase.database();
 
+   var ref = database.ref('test');
+   ref.set({
+      test: 'Hello, Firebase!'
+   });
+
+   /*
    // login anonymous user
    firebase.auth().signInAnonymously().catch(function(error) {
       // error handling
@@ -72,6 +83,7 @@
       // user is signed out
       }
    })
+   */
 </script>
 
 <script>
