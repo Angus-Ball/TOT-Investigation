@@ -16,7 +16,14 @@
     <link href="jspsych/jspsych.css" rel="stylesheet" type="text/css"/>
     <link href="forms/img/favicon.ico" rel="icon" type="image/x-icon"/>
  </head>
- <body></body>
+ <body>
+   <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js'
+      import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js'
+      import { getDatabase } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js"
+      import { getAuth } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"
+   </script>
+ </body>
 
 <!-- Allow remote storage on Google Firebase -->
 <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -32,10 +39,10 @@
 <script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js"></script>
 -->
 <!-- enter some javascript code -->
-
+<!--
 <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js"></script>
-
+-->
 <script>
    ////// Firebase set up //////
    
@@ -65,7 +72,6 @@
       test: 'Hello, Firebase!'
    });
 
-   /*
    // login anonymous user
    firebase.auth().signInAnonymously().catch(function(error) {
       // error handling
@@ -83,7 +89,7 @@
       // user is signed out
       }
    })
-   */
+   
 </script>
 
 <script>
