@@ -22,20 +22,8 @@
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 
 <script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js">
-   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"
-</script>
+   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
 
-<script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js">
-   import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js"
-</script>
-<script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"></script>
-<script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js"></script>
-
-<!-- enter some javascript code -->
-
-<script>
-   ////// Firebase set up //////
-   
    const firebaseConfig = {
       apiKey: "AIzaSyB6KWariXwI1KTCAKm41E81arH7UA4xIbY",
       authDomain: "tot-study.firebaseapp.com",
@@ -47,14 +35,41 @@
       measurementID: "G-C1Z66NMLP5"
    };
 
+   const app = initializeApp(firebaseConfig);
+</script>
+
+<script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js">
+   import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+   
+   const analytics = getAnalytics(app);
+</script>
+<script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js"></script>
+
+<!-- enter some javascript code -->
+
+<script>
+   ////// Firebase set up //////
+   /*
+   const firebaseConfig = {
+      apiKey: "AIzaSyB6KWariXwI1KTCAKm41E81arH7UA4xIbY",
+      authDomain: "tot-study.firebaseapp.com",
+      databaseURL: "https://tot-study-default-rtdb.firebaseio.com",
+      projectId: "tot-study",
+      storageBucket: "tot-study.appspot.com",
+      messagingSenderID: "447474888196",
+      appId: "1:447474888196:web:105f58b0b32d7e6e8d0f51",
+      measurementID: "G-C1Z66NMLP5"
+   };
+   */
    // Initialize Firebase
    /*
    firebase.initializeApp(firebaseConfig);
    firebase.analytics();
-   */
+   
    const app = initializeApp(firebaseConfig);
    const analytics = getAnalytics(app);
-   
+   */
    // Get a reference to the database service
    var database = firebase.database();
 
