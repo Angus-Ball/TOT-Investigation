@@ -47,7 +47,7 @@
    firebase.initializeApp(firebaseConfig);
    firebase.analytics();
    */
-   const app = initializeApp(firebaseConfig);
+   const app = firebase.initializeApp(firebaseConfig);
    const analytics = getAnalytics(app);
    
    // Get a reference to the database service
