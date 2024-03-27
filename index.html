@@ -262,15 +262,21 @@
         randomize_order: true
     };
 
-    var debrief = {
-        type: jsPsychExternalHtml,
-        url: "forms/debriefing.html",
-        data: {"phase": "Debrief"},
-        on_finish: function(){
+    var send_data = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: "Thank you for participating!<br/><br/><b>Press any key to view the debriefing page</b>",
+      choices: 'ALL_KEYS',
+      on_finish: function(){
          firebase.database().ref(subject_id).set({
             data: jsPsych.data.get().values()
          })
       },
+    };
+
+    var debrief = {
+        type: jsPsychExternalHtml,
+        url: "forms/debriefing.html",
+        data: {"phase": "Debrief"},
     };
  
     var timeline = [];
@@ -282,6 +288,7 @@
     timeline.push(study_phase);        
     timeline.push(test_instructions);  
     timeline.push(test_phase);         
+    timeline.push(send_data);          
     timeline.push(debrief);            
     
     jsPsych.run(timeline)
