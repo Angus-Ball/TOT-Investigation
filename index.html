@@ -16,34 +16,21 @@
     <link href="jspsych/jspsych.css" rel="stylesheet" type="text/css"/>
     <link href="forms/img/favicon.ico" rel="icon" type="image/x-icon"/>
  </head>
- <body>
-   <script type="module">
-      import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js'
-      import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js'
-      import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js"
-      import { getAuth } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"
-   </script>
- </body>
+ <body></body>
 
-<!-- Allow remote storage on Google Firebase -->
+ <!-- Allow remote storage on Google Firebase -->
 <!-- The core Firebase JS SDK is always required and must be listed first -->
-<!--
-<script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js">
-   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-</script>
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
 
-<script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js">
-   import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
-</script>
-<script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"></script>
-<script type="module" src="https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js"></script>
--->
-<!-- enter some javascript code -->
-<!--
-<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js"></script>
--->
-<script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-database.js"></script>
+
+<!-- enter some javascript code-->
+<script type="text/javascript">
+
    ////// Firebase set up //////
    
    const firebaseConfig = {
@@ -58,18 +45,11 @@
    };
    
    // Initialize Firebase
-   //firebase.initializeApp(firebaseConfig);
-   
-   const app = initializeApp(firebaseConfig);
-   const analytics = getAnalytics(app);
+   firebase.initializeApp(firebaseConfig);
+   firebase.analytics();
 
-   // Get a reference to the database service
+   // get a reference to the database service
    var database = firebase.database();
-
-   var ref = database.ref('test');
-   ref.set({
-      test: 'Hello, Firebase!'
-   });
 
    // login anonymous user
    firebase.auth().signInAnonymously().catch(function(error) {
@@ -93,13 +73,6 @@
 
 <script>
    const jsPsych = initJsPsych({
-      override_safe_mode: true,
-      use_webaudio: false,
-      on_finish: function(){
-         firebase.database().ref(subject_id).set({
-            data: jsPsych.data.get().values()
-         })
-      },
       on_finish: function() {
          window.location.href = "https://umanitobapsych.sona-systems.com/webstudy_credit.aspx?experiment_id=XXXXXXX&credit_token=XXXXXXX&survey_code="+SONA_ID;
          //to display data at the end:
@@ -296,7 +269,12 @@
     var debrief = {
         type: jsPsychExternalHtml,
         url: "forms/debriefing.html",
-        data: {"phase": "Debrief"}
+        data: {"phase": "Debrief"},
+        on_finish: function(){
+         firebase.database().ref(subject_id).set({
+            data: jsPsych.data.get().values()
+         })
+      },
     };
  
     var timeline = [];
