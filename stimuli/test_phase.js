@@ -13,16 +13,3 @@ var testwords = [
     {cue: "<b>'A type of fee'</b>",                 question: [{prompt: "<b>'A type of fee'</b>",                   name: 'recalled_word',   value: "", required: false, rows: 1, columns: 25}],    word0: "tax",          word1: "parking",  word2: "reservation",  word3: "interest",     word0_type: "associate", word1_type: "foil1", word2_type: "foil2", word3_type: "foil3", target: "tariff"        },
     {cue: "<b>'Causes a sedative effect'</b>",      question: [{prompt: "<b>'Causes a sedative effect'</b>",        name: 'recalled_word',   value: "", required: false, rows: 1, columns: 25}],    word0: "depressant",   word1: "fatigue",  word2: "tea",          word3: "nap",          word0_type: "associate", word1_type: "foil1", word2_type: "foil2", word3_type: "foil3", target: "tranquilizer"  }
 ];
-
-//data0: {"type": "associate", "target":"abdicate"   },  data1: {"type": "foil", "target":"abdicate"},        data2: {"type": "foil", "target":"abdicate"},      data3: {"type": "foil", "target":"abdicate"},    
-//data0: {"type": "associate", "target":"allocate"   },  data1: {"type": "foil", "target":"allocate"},        data2: {"type": "foil", "target":"allocate"},      data3: {"type": "foil", "target":"allocate"},    
-//data0: {"type": "associate", "target":"asbestos"   },  data1: {"type": "foil", "target":"asbestos"},        data2: {"type": "foil", "target":"asbestos"},      data3: {"type": "foil", "target":"asbestos"},    
-//data0: {"type": "associate", "target":"decanter"   },  data1: {"type": "foil", "target":"decanter"},        data2: {"type": "foil", "target":"decanter"},      data3: {"type": "foil", "target":"decanter"},    
-//data0: {"type": "associate", "target":"deplete"    },  data1: {"type": "foil", "target":"deplete"},         data2: {"type": "foil", "target":"deplete"},       data3: {"type": "foil", "target":"deplete"},     
-//data0: {"type": "associate", "target":"incubate"   },  data1: {"type": "foil", "target":"incubate"},        data2: {"type": "foil", "target":"incubate"},      data3: {"type": "foil", "target":"incubate"},    
-//data0: {"type": "associate", "target":"instigate"  },  data1: {"type": "foil", "target":"instigate"},       data2: {"type": "foil", "target":"instigate"},     data3: {"type": "foil", "target":"instigate"},   
-//data0: {"type": "associate", "target":"javelin"    },  data1: {"type": "foil", "target":"javelin"},         data2: {"type": "foil", "target":"javelin"},       data3: {"type": "foil", "target":"javelin"},     
-//data0: {"type": "associate", "target":"linen"      },  data1: {"type": "foil", "target":"linen"},           data2: {"type": "foil", "target":"linen"},         data3: {"type": "foil", "target":"linen"},       
-//data0: {"type": "associate", "target":"sextant"    },  data1: {"type": "foil", "target":"sextant"},         data2: {"type": "foil", "target":"sextant"},       data3: {"type": "foil", "target":"sextant"},     
-//data0: {"type": "associate", "target":"tariff"     },  data1: {"type": "foil", "target":"tariff"},          data2: {"type": "foil", "target":"tariff"},        data3: {"type": "foil", "target":"tariff"},      
-//data0: {"type": "associate", "target":"tranquilizer"}, data1: {"type": "foil", "target":"tranquilizer"},    data2: {"type": "foil", "target":"tranquilizer"},  data3: {"type": "foil", "target":"tranquilizer"},
