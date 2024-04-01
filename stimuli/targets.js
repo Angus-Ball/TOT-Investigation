@@ -1,15 +1,15 @@
 // Study List Words
 var targets = [
-     {target: "abdicate",     data: {"name":"abdicate"}},
-     {target: "allocate",     data: {"name":"allocate"}},
-     {target: "asbestos",     data: {"name":"asbestos"}},
-     {target: "decanter",     data: {"name":"decanter"}},
-     {target: "deplete",      data: {"name":"deplete"}},
-     {target: "incubate",     data: {"name":"incubate"}},
-     {target: "instigate",    data: {"name":"instigate"}},
-     {target: "javelin",      data: {"name":"javelin"}},
-     {target: "linen",        data: {"name":"linen"}},
-     {target: "sextant",      data: {"name":"sextant"}},
-     {target: "tariff",       data: {"name":"tariff"}},
-     {target: "tranquilizer", data: {"name":"tranquilizer"}}  
+     {target: "abdicate",     data: {"phase":"study"}},
+     {target: "allocate",     data: {"phase":"study"}},
+     {target: "asbestos",     data: {"phase":"study"}},
+     {target: "decanter",     data: {"phase":"study"}},
+     {target: "deplete",      data: {"phase":"study"}},
+     {target: "incubate",     data: {"phase":"study"}},
+     {target: "instigate",    data: {"phase":"study"}},
+     {target: "javelin",      data: {"phase":"study"}},
+     {target: "linen",        data: {"phase":"study"}},
+     {target: "sextant",      data: {"phase":"study"}},
+     {target: "tariff",       data: {"phase":"study"}},
+     {target: "tranquilizer", data: {"phase":"study"}}  
 ];
