@@ -241,7 +241,7 @@
                             slider_width: 700,
                             slider_start: 50,
                             require_movement: true,
-                            data: {phase: 'slider_response', cue: jsPsych.timelineVariable('cue')}, // Additional data if needed
+                            data: {phase: 'slider_response'},
                         },
 
                     // button responses 
@@ -250,9 +250,9 @@
                             stimulus: jsPsych.timelineVariable('cue'),
                             choices: [jsPsych.timelineVariable('word0'), jsPsych.timelineVariable('word1'), jsPsych.timelineVariable('word2'), jsPsych.timelineVariable('word3')],
                             data: {
-                              cue: jsPsych.timelineVariable('cue'), target: jsPsych.timelineVariable('target'), phase: 'button_response',
+                              target: jsPsych.timelineVariable('target'), phase: 'button_response',
                               response_key: [jsPsych.timelineVariable('word0'), jsPsych.timelineVariable('word1'), jsPsych.timelineVariable('word2'), jsPsych.timelineVariable('word3')],
-                              data_key: [jsPsych.timelineVariable('data0'), jsPsych.timelineVariable('data1'), jsPsych.timelineVariable('data2'), jsPsych.timelineVariable('data3')]
+                              data_key: [jsPsych.timelineVariable('data0.type'), jsPsych.timelineVariable('data1.type'), jsPsych.timelineVariable('data2.type'), jsPsych.timelineVariable('data3.type')]
                             },
                             prompt: "<br><b>Choose whichever word feels closest to what you were trying to recall</b>"
                         },
