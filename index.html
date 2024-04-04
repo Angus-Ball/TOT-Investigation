@@ -236,8 +236,10 @@
         return(testwords_list) // return that list to the variable
     };
 
-    testwords = shuffle_variable(testwords);
-    //console.table(testwords);
+    testwords1 = shuffle_variable(testwords1);
+    testwords2 = shuffle_variable(testwords2);
+    console.table(testwords1);
+    console.table(testwords2);
 
     ////// TEST PHASE //////
     var test_instructions_1 = {
@@ -392,9 +394,7 @@
     timeline.push(study_instructions_2);
     timeline.push(study_phase_2);   
     timeline.push(test_instructions_2);
-    timeline.push(test_phase_2);
-    //timeline.push(test_instructions);  
-    //timeline.push(test_phase);         
+    timeline.push(test_phase_2);         
     //timeline.push(send_data);          
     //timeline.push(debrief);            
     
