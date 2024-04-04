@@ -15,11 +15,11 @@ var targets = [
 ];
 
 var block_1 = [
-     {target: "allocate",   data: {"phase":"study_1"}},
+     {target: "<font size = '+2'>allocate</font>",   data: {"phase":"study_1"}},
      {target: "decanter",   data: {"phase":"study_1"}},
-     {target: "deplete",   data: {"phase":"study_1"}},
+     {target: "<font size = '+2'>deplete</font>",   data: {"phase":"study_1"}},
      {target: "linen",   data: {"phase":"study_1"}},
-     {target: "sextant",   data: {"phase":"study_1"}},
+     {target: "<font size = '+2'>sextant</font>",   data: {"phase":"study_1"}},
      {target: "tranquilizer",   data: {"phase":"study_1"}}
 ];
 
