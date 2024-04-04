@@ -366,7 +366,7 @@
 
     var send_data = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: "<font size='+1'>Thank you for participating!<br/><br/><b>Press the spacebar to view the debriefing page</b></font>",
+      stimulus: "<font size='+2'>Thank you for participating!<br/><br/><b>Press the spacebar to view the debriefing page</b></font>",
       choices: ' ',
       on_finish: function(){
          console.log(subject_id),
@@ -395,7 +395,7 @@
     //timeline.push(study_phase_2);   
     timeline.push(test_instructions_2);
     timeline.push(test_phase_2);         
-    //timeline.push(send_data);          
+    timeline.push(send_data);          
     timeline.push(debrief);            
     
     jsPsych.run(timeline)
