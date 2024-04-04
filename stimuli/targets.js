@@ -13,3 +13,21 @@ var targets = [
      {target: "tariff",       data: {"phase":"study"}},
      {target: "tranquilizer", data: {"phase":"study"}}  
 ];
+
+var block_1 = [
+     {target: "linen",   data: {"phase":"study_1"}},
+     {target: "deplete",   data: {"phase":"study_1"}},
+     {target: "allocate",   data: {"phase":"study_1"}},
+     {target: "sextant",   data: {"phase":"study_1"}},
+     {target: "decanter",   data: {"phase":"study_1"}},
+     {target: "tranquilizer",   data: {"phase":"study_1"}}
+];
+
+var block_2 = [
+     {target: "asbestos",   data: {"phase":"study_2"}},
+     {target: "instigate",   data: {"phase":"study_2"}},
+     {target: "javelin",   data: {"phase":"study_2"}},
+     {target: "abdicate",   data: {"phase":"study_2"}},
+     {target: "tariff",   data: {"phase":"study_2"}},
+     {target: "incubate",   data: {"phase":"study_2"}}
+];
