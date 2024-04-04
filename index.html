@@ -133,7 +133,7 @@
  
     var welcome = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: "Welcome to the experiment!<br><br><b>Press any key to view the instructions.</b>",
+      stimulus: "<font size='+1'>Welcome to the experiment!<br><br><b>Press any key to view the instructions.</b></font>",
       choices: 'ALL_KEYS'
    };
     
@@ -141,8 +141,8 @@
  
     var study_instructions_1 = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: "You will be presented with some words one by one to study for only a moment each.<br>Pay attention because you will be asked to recall the words afterwards.",
-      prompt: "<br><b>Press the space bar when you are ready to proceed to the first study phase.</b>",
+      stimulus: "<font size='+1'>You will be presented with some words one by one to study for only a moment each.<br>Pay attention because you will be asked to recall the words afterwards.</font>",
+      prompt: "<font size='+1'><br><b>Press the space bar when you are ready to proceed to the first study phase.</b></font>",
       choices: " "
    };
 
@@ -175,8 +175,8 @@
 
     var study_instructions_2 = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: "You will be presented with some words one by one to study for only a moment each.<br>Pay attention because you will be asked to recall the words afterwards.",
-      prompt: "<br><b>Press the space bar when you are ready to proceed to the second study phase.</b>",
+      stimulus: "<font size='+1'>You will be presented with some words one by one to study for only a moment each.<br>Pay attention because you will be asked to recall the words afterwards.</font>",
+      prompt: "<font size='+1'><br><b>Press the space bar when you are ready to proceed to the second study phase.</b></font>",
       choices: " "
    };
 
@@ -244,8 +244,8 @@
     ////// TEST PHASE //////
     var test_instructions_1 = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: "In this next phase you will attempt to recall one of the words you just viewed based on a short clue.<br><br>When you recall it, you will have a chance to type the word before proceeding to the next trial.<br><br>When you do not recall, you will indicate whether you feel it is on the tip of your tongue or truly forgotten.<br>You will then try to choose the most similar-feeling word from a short list.",
-      prompt: "<br><b>Press the space bar when you are ready to proceed to the first test phase.</b>",
+      stimulus: "<font size='+1'>In this next phase you will attempt to recall one of the words you just viewed based on a short clue.<br><br>When you recall it, you will have a chance to type the word before proceeding to the next trial.<br><br>When you do not recall, you will indicate whether you feel it is on the tip of your tongue or truly forgotten.<br>You will then try to choose the most similar-feeling word from a short list.</font>",
+      prompt: "<font size='+1'><br><b>Press the space bar when you are ready to proceed to the first test phase.</b></font>",
       choices: " ",
    };
 
@@ -254,7 +254,7 @@
             {
                 type: jsPsychSurveyText,
                 questions: jsPsych.timelineVariable('question'),
-                preamble: "<b>If you can recall which word from the list matches the following clue, type it below.<br/>If you cannot remember the word, click continue.</b>",
+                preamble: "<font size='+1'><b>If you can recall which word from the list matches the following clue, type it below.<br/>If you cannot remember the word, click continue.</b></font>",
                 data: {phase: 'recall', cue: jsPsych.timelineVariable('cue'), target: jsPsych.timelineVariable('target')}
             },
 
@@ -274,7 +274,7 @@
                         {
                             type: jsPsychHtmlSliderResponse,
                             stimulus: jsPsych.timelineVariable('cue'),
-                            labels: ['I do not know it at all', 'I am certain I know it but it is on the tip of my tongue'],
+                            labels: ["<font size='+1'>I do not know it at all</font>", "<font size='+1'>I am certain I know it but it is on the tip of my tongue</font>"],
                             slider_width: 700,
                             slider_start: 50,
                             require_movement: true,
@@ -292,7 +292,7 @@
                               response_key: [jsPsych.timelineVariable('word0'), jsPsych.timelineVariable('word1'), jsPsych.timelineVariable('word2'), jsPsych.timelineVariable('word3')],
                               data_key: [jsPsych.timelineVariable('word0_type'), jsPsych.timelineVariable('word1_type'), jsPsych.timelineVariable('word2_type'), jsPsych.timelineVariable('word3_type')]
                             },
-                            prompt: "<br><b>Choose whichever word feels closest to what you were trying to recall</b>"
+                            prompt: "<font size='+1'><br><b>Choose whichever word feels closest to what you were trying to recall</b></font>"
                         },
                   ],
                 },
@@ -305,8 +305,8 @@
 
     var test_instructions_2 = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: "In this next phase you will attempt to recall one of the words you just viewed based on a short clue.<br><br>When you recall it, you will have a chance to type the word before proceeding to the next trial.<br><br>When you do not recall, you will indicate whether you feel it is on the tip of your tongue or truly forgotten.<br>You will then try to choose the most similar-feeling word from a short list.",
-      prompt: "<br><b>Press the space bar when you are ready to proceed to the second test phase.</b>",
+      stimulus: "<font size='+1'>In this next phase you will attempt to recall one of the words you just viewed based on a short clue.<br><br>When you recall it, you will have a chance to type the word before proceeding to the next trial.<br><br>When you do not recall, you will indicate whether you feel it is on the tip of your tongue or truly forgotten.<br>You will then try to choose the most similar-feeling word from a short list.</font>",
+      prompt: "<font size='+1'><br><b>Press the space bar when you are ready to proceed to the second test phase.</b></font>",
       choices: " ",
    };
 
@@ -315,7 +315,7 @@
             {
                 type: jsPsychSurveyText,
                 questions: jsPsych.timelineVariable('question'),
-                preamble: "<b>If you can recall which word from the list matches the following clue, type it below.<br/>If you cannot remember the word, click continue.</b>",
+                preamble: "<font size='+1'><b>If you can recall which word from the list matches the following clue, type it below.<br/>If you cannot remember the word, click continue.</b></font>",
                 data: {phase: 'recall', cue: jsPsych.timelineVariable('cue'), target: jsPsych.timelineVariable('target')}
             },
 
@@ -335,7 +335,7 @@
                         {
                             type: jsPsychHtmlSliderResponse,
                             stimulus: jsPsych.timelineVariable('cue'),
-                            labels: ['I do not know it at all', 'I am certain I know it but it is on the tip of my tongue'],
+                            labels: ["<font size='+1'>I do not know it at all</font>", "<font size='+1'>I am certain I know it but it is on the tip of my tongue</font>"],
                             slider_width: 700,
                             slider_start: 50,
                             require_movement: true,
@@ -353,7 +353,7 @@
                               response_key: [jsPsych.timelineVariable('word0'), jsPsych.timelineVariable('word1'), jsPsych.timelineVariable('word2'), jsPsych.timelineVariable('word3')],
                               data_key: [jsPsych.timelineVariable('word0_type'), jsPsych.timelineVariable('word1_type'), jsPsych.timelineVariable('word2_type'), jsPsych.timelineVariable('word3_type')]
                             },
-                            prompt: "<br><b>Choose whichever word feels closest to what you were trying to recall</b>"
+                            prompt: "<font size='+1'><br><b>Choose whichever word feels closest to what you were trying to recall</b></font>"
                         },
                   ],
                 },
@@ -366,7 +366,7 @@
 
     var send_data = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: "Thank you for participating!<br/><br/><b>Press the spacebar to view the debriefing page</b>",
+      stimulus: "<font size='+1'>Thank you for participating!<br/><br/><b>Press the spacebar to view the debriefing page</b></font>",
       choices: ' ',
       on_finish: function(){
          console.log(subject_id),
