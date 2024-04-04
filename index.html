@@ -255,7 +255,7 @@
                 type: jsPsychSurveyText,
                 questions: jsPsych.timelineVariable('question'),
                 preamble: "<font size='+1'><b>If you can recall which word from the list matches the following clue, type it below.<br/>If you cannot remember the word, click continue.</b></font>",
-                data: {phase: 'recall', cue: jsPsych.timelineVariable('cue'), target: jsPsych.timelineVariable('target')}
+                data: {phase: 'recall_2', cue: jsPsych.timelineVariable('cue'), target: jsPsych.timelineVariable('target')}
             },
 
             // Conditional block based on participant response
@@ -278,7 +278,7 @@
                             slider_width: 700,
                             slider_start: 50,
                             require_movement: true,
-                            data: {phase: 'slider_response'},
+                            data: {phase: 'slider_response_2'},
                         },
 
                     // button responses 
@@ -287,7 +287,7 @@
                             stimulus: jsPsych.timelineVariable('cue'),
                             choices: [jsPsych.timelineVariable('word0'), jsPsych.timelineVariable('word1'), jsPsych.timelineVariable('word2'), jsPsych.timelineVariable('word3')],
                             data: {
-                              phase: 'button_response',
+                              phase: 'button_response_2',
                               target: jsPsych.timelineVariable('target'),
                               response_key: [jsPsych.timelineVariable('word0'), jsPsych.timelineVariable('word1'), jsPsych.timelineVariable('word2'), jsPsych.timelineVariable('word3')],
                               data_key: [jsPsych.timelineVariable('word0_type'), jsPsych.timelineVariable('word1_type'), jsPsych.timelineVariable('word2_type'), jsPsych.timelineVariable('word3_type')]
@@ -316,7 +316,7 @@
                 type: jsPsychSurveyText,
                 questions: jsPsych.timelineVariable('question'),
                 preamble: "<font size='+1'><b>If you can recall which word from the list matches the following clue, type it below.<br/>If you cannot remember the word, click continue.</b></font>",
-                data: {phase: 'recall', cue: jsPsych.timelineVariable('cue'), target: jsPsych.timelineVariable('target')}
+                data: {phase: 'recall_2', cue: jsPsych.timelineVariable('cue'), target: jsPsych.timelineVariable('target')}
             },
 
             // Conditional block based on participant response
@@ -339,7 +339,7 @@
                             slider_width: 700,
                             slider_start: 50,
                             require_movement: true,
-                            data: {phase: 'slider_response'},
+                            data: {phase: 'slider_response_2'},
                         },
 
                     // button responses 
@@ -348,7 +348,7 @@
                             stimulus: jsPsych.timelineVariable('cue'),
                             choices: [jsPsych.timelineVariable('word0'), jsPsych.timelineVariable('word1'), jsPsych.timelineVariable('word2'), jsPsych.timelineVariable('word3')],
                             data: {
-                              phase: 'button_response',
+                              phase: 'button_response_2',
                               target: jsPsych.timelineVariable('target'),
                               response_key: [jsPsych.timelineVariable('word0'), jsPsych.timelineVariable('word1'), jsPsych.timelineVariable('word2'), jsPsych.timelineVariable('word3')],
                               data_key: [jsPsych.timelineVariable('word0_type'), jsPsych.timelineVariable('word1_type'), jsPsych.timelineVariable('word2_type'), jsPsych.timelineVariable('word3_type')]
