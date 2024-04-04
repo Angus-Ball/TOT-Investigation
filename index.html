@@ -136,17 +136,17 @@
       stimulus: "Welcome to the experiment!<br><br><b>Press any key to view the instructions.</b>",
       choices: 'ALL_KEYS'
    };
- 
-    var instructions = {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus: "You will be presented with some words one by one to study for only a moment each.<br>Pay attention because you will be asked to recall the words afterwards.",
-      prompt: "<br><b>Press the space bar when you are ready to proceed to the study phase.</b>",
-      choices: " "
-   };
     
     ////// STUDY PHASE //////
+ 
+    var study_instructions_1 = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: "You will be presented with some words one by one to study for only a moment each.<br>Pay attention because you will be asked to recall the words afterwards.",
+      prompt: "<br><b>Press the space bar when you are ready to proceed to the first study phase.</b>",
+      choices: " "
+   };
 
-    var study_phase = {
+    var study_phase_1 = {
         timeline: [
 
           //Fixation Cross
@@ -164,21 +164,48 @@
             stimulus: jsPsych.timelineVariable('target'),
             choices: "NO_KEYS",
             trial_duration: 1250,
-            data: {"phase": "study"}
+            data: {"phase": "study_1"}
           }
         ],
  
         //Study List
-        timeline_variables: targets,
+        timeline_variables: block_1,
         randomize_order: true
     };
- 
-    var test_instructions = {
+
+    var study_instructions_2 = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: "In this next phase you will attempt to recall one of the words you just viewed based on a short clue.<br><br>When you recall it, you will have a chance to type the word before proceeding to the next trial.<br><br>When you do not recall, you will indicate whether you feel it is on the tip of your tongue or truly forgotten.<br>You will then try to choose the most similar-feeling word from a short list.",
-      prompt: "<br><b>Press the space bar when you are ready to proceed to the test phase.</b>",
-      choices: " ",
+      stimulus: "You will be presented with some words one by one to study for only a moment each.<br>Pay attention because you will be asked to recall the words afterwards.",
+      prompt: "<br><b>Press the space bar when you are ready to proceed to the first study phase.</b>",
+      choices: " "
    };
+
+   var study_phase_2 = {
+        timeline: [
+
+          //Fixation Cross
+          {
+            type: jsPsychHtmlKeyboardResponse,
+            stimulus: '+',
+            choices: "NO_KEYS", 
+            trial_duration: 1000,
+            data: {"phase": "study"}
+          },
+
+         //Target Presentation
+          {
+            type: jsPsychHtmlKeyboardResponse,
+            stimulus: jsPsych.timelineVariable('target'),
+            choices: "NO_KEYS",
+            trial_duration: 1250,
+            data: {"phase": "study_2"}
+          }
+        ],
+ 
+        //Study List
+        timeline_variables: block_2,
+        randomize_order: true
+    };
 
     ////// SHUFFLE 4AFC BUTTONS //////
 
@@ -213,6 +240,12 @@
     //console.table(testwords);
 
     ////// TEST PHASE //////
+    var test_instructions = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: "In this next phase you will attempt to recall one of the words you just viewed based on a short clue.<br><br>When you recall it, you will have a chance to type the word before proceeding to the next trial.<br><br>When you do not recall, you will indicate whether you feel it is on the tip of your tongue or truly forgotten.<br>You will then try to choose the most similar-feeling word from a short list.",
+      prompt: "<br><b>Press the space bar when you are ready to proceed to the test phase.</b>",
+      choices: " ",
+   };
 
     var test_phase = {
         timeline: [
@@ -252,7 +285,8 @@
                             stimulus: jsPsych.timelineVariable('cue'),
                             choices: [jsPsych.timelineVariable('word0'), jsPsych.timelineVariable('word1'), jsPsych.timelineVariable('word2'), jsPsych.timelineVariable('word3')],
                             data: {
-                              target: jsPsych.timelineVariable('target'), phase: 'button_response',
+                              phase: 'button_response',
+                              target: jsPsych.timelineVariable('target'),
                               response_key: [jsPsych.timelineVariable('word0'), jsPsych.timelineVariable('word1'), jsPsych.timelineVariable('word2'), jsPsych.timelineVariable('word3')],
                               data_key: [jsPsych.timelineVariable('word0_type'), jsPsych.timelineVariable('word1_type'), jsPsych.timelineVariable('word2_type'), jsPsych.timelineVariable('word3_type')]
                             },
@@ -282,20 +316,22 @@
     var debrief = {
         type: jsPsychExternalHtml,
         url: "forms/debriefing.html",
-        data: {"phase": "Debrief"},
+        data: {"phase": "debrief"},
     };
  
     var timeline = [];
 
-    timeline.push(consent);            
-    timeline.push(no_consent);         
+    //timeline.push(consent);            
+    //timeline.push(no_consent);         
     timeline.push(welcome);            
-    timeline.push(instructions);       
-    timeline.push(study_phase);        
-    timeline.push(test_instructions);  
-    timeline.push(test_phase);         
-    timeline.push(send_data);          
-    timeline.push(debrief);            
+    timeline.push(study_instructions_1);       
+    timeline.push(study_phase_1);     
+    timeline.push(study_instructions_2);
+    timeline.push(study_phase_2);   
+    //timeline.push(test_instructions);  
+    //timeline.push(test_phase);         
+    //timeline.push(send_data);          
+    //timeline.push(debrief);            
     
     jsPsych.run(timeline)
  </script>
