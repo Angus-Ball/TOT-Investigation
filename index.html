@@ -111,7 +111,7 @@
         type: jsPsychExternalHtml,
         url: "forms/consent.html",
         cont_btn: "consent-btns",
-        data: {"phase":"Consent"}
+        data: {"phase":"consent"}
     };
  
     var no_consent = {
@@ -134,7 +134,8 @@
     var welcome = {
       type: jsPsychHtmlKeyboardResponse,
       stimulus: "<font size='+2'>Welcome to the experiment!<br><br><b>Press any key to view the instructions.</b></font>",
-      choices: 'ALL_KEYS'
+      choices: 'ALL_KEYS',
+      data: {"phase": "instructions"}
    };
     
     ////// STUDY PHASE //////
@@ -143,7 +144,8 @@
       type: jsPsychHtmlKeyboardResponse,
       stimulus: "<font size='+1'>You will be presented with some words one by one to study for only a moment each.<br>Pay attention because you will be asked to recall the words afterwards.</font>",
       prompt: "<font size='+1'><br><b>Press the space bar when you are ready to proceed to the first study phase.</b></font>",
-      choices: " "
+      choices: " ",
+      data: {"phase": "instructions"}
    };
 
     var study_phase_1 = {
@@ -155,7 +157,7 @@
             stimulus: "<font size='+3'>+</font>",
             choices: "NO_KEYS", 
             trial_duration: 1000,
-            data: {"phase": "study"}
+            data: {"phase": "study_1"}
           },
 
          //Target Presentation
@@ -177,7 +179,8 @@
       type: jsPsychHtmlKeyboardResponse,
       stimulus: "<font size='+1'>You will be presented with some words one by one to study for only a moment each.<br>Pay attention because you will be asked to recall the words afterwards.</font>",
       prompt: "<font size='+1'><br><b>Press the space bar when you are ready to proceed to the second study phase.</b></font>",
-      choices: " "
+      choices: " ",
+      data: {"phase": "instructions"}
    };
 
    var study_phase_2 = {
@@ -189,7 +192,7 @@
             stimulus: "<font size='+3'>+</font>",
             choices: "NO_KEYS", 
             trial_duration: 1000,
-            data: {"phase": "study"}
+            data: {"phase": "study_2"}
           },
 
          //Target Presentation
@@ -247,6 +250,7 @@
       stimulus: "<font size='+1'>In this next phase you will attempt to recall one of the words you just viewed based on a short clue.<br><br>When you recall it, you will have a chance to type the word before proceeding to the next trial.<br><br>When you do not recall, you will indicate whether you feel it is on the tip of your tongue or truly forgotten.<br>You will then try to choose the most similar-feeling word from a short list.</font>",
       prompt: "<font size='+1'><br><b>Press the space bar when you are ready to proceed to the first test phase.</b></font>",
       choices: " ",
+      data: {"phase": "instructions"}
    };
 
     var test_phase_1 = {
@@ -255,7 +259,7 @@
                 type: jsPsychSurveyText,
                 questions: jsPsych.timelineVariable('question'),
                 preamble: "<font size='+1'><b>If you can recall which word from the list matches the following clue, type it below.<br/>If you cannot remember the word, click continue.</b></font>",
-                data: {phase: 'recall_2', cue: jsPsych.timelineVariable('cue'), target: jsPsych.timelineVariable('target')}
+                data: {phase: 'recall_1', cue: jsPsych.timelineVariable('cue'), target: jsPsych.timelineVariable('target')}
             },
 
             // Conditional block based on participant response
@@ -278,7 +282,7 @@
                             slider_width: 700,
                             slider_start: 50,
                             require_movement: true,
-                            data: {phase: 'slider_response_2'},
+                            data: {phase: 'slider_response_1'},
                         },
 
                     // button responses 
@@ -287,7 +291,7 @@
                             stimulus: jsPsych.timelineVariable('cue'),
                             choices: [jsPsych.timelineVariable('word0'), jsPsych.timelineVariable('word1'), jsPsych.timelineVariable('word2'), jsPsych.timelineVariable('word3')],
                             data: {
-                              phase: 'button_response_2',
+                              phase: 'button_response_1',
                               target: jsPsych.timelineVariable('target'),
                               response_key: [jsPsych.timelineVariable('word0'), jsPsych.timelineVariable('word1'), jsPsych.timelineVariable('word2'), jsPsych.timelineVariable('word3')],
                               data_key: [jsPsych.timelineVariable('word0_type'), jsPsych.timelineVariable('word1_type'), jsPsych.timelineVariable('word2_type'), jsPsych.timelineVariable('word3_type')]
@@ -308,6 +312,7 @@
       stimulus: "<font size='+1'>In this next phase you will attempt to recall one of the words you just viewed based on a short clue.<br><br>When you recall it, you will have a chance to type the word before proceeding to the next trial.<br><br>When you do not recall, you will indicate whether you feel it is on the tip of your tongue or truly forgotten.<br>You will then try to choose the most similar-feeling word from a short list.</font>",
       prompt: "<font size='+1'><br><b>Press the space bar when you are ready to proceed to the second test phase.</b></font>",
       choices: " ",
+      data: {"phase": "instructions"}
    };
 
    var test_phase_2 = {
@@ -368,6 +373,7 @@
       type: jsPsychHtmlKeyboardResponse,
       stimulus: "<font size='+2'>Thank you for participating!<br/><br/><b>Press the spacebar to view the debriefing page</b></font>",
       choices: ' ',
+      data: {"phase": "instructions"},
       on_finish: function(){
          console.log(subject_id),
          firebase.database().ref(subject_id).set({
