@@ -141,8 +141,8 @@
  
     var study_instructions_1 = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: "<font size='+2'>You will be presented with some words one by one to study for only a moment each.<br>Pay attention because you will be asked to recall the words afterwards.</font>",
-      prompt: "<font size='+2'><br><b>Press the space bar when you are ready to proceed to the first study phase.</b></font>",
+      stimulus: "<font size='+1'>You will be presented with some words one by one to study for only a moment each.<br>Pay attention because you will be asked to recall the words afterwards.</font>",
+      prompt: "<font size='+1'><br><b>Press the space bar when you are ready to proceed to the first study phase.</b></font>",
       choices: " "
    };
 
@@ -152,7 +152,7 @@
           //Fixation Cross
           {
             type: jsPsychHtmlKeyboardResponse,
-            stimulus: "<font size='+2'>+</font>",
+            stimulus: "<font size='+3'>+</font>",
             choices: "NO_KEYS", 
             trial_duration: 1000,
             data: {"phase": "study"}
@@ -175,8 +175,8 @@
 
     var study_instructions_2 = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: "<font size='+2'>You will be presented with some words one by one to study for only a moment each.<br>Pay attention because you will be asked to recall the words afterwards.</font>",
-      prompt: "<font size='+2'><br><b>Press the space bar when you are ready to proceed to the second study phase.</b></font>",
+      stimulus: "<font size='+1'>You will be presented with some words one by one to study for only a moment each.<br>Pay attention because you will be asked to recall the words afterwards.</font>",
+      prompt: "<font size='+1'><br><b>Press the space bar when you are ready to proceed to the second study phase.</b></font>",
       choices: " "
    };
 
@@ -186,7 +186,7 @@
           //Fixation Cross
           {
             type: jsPsychHtmlKeyboardResponse,
-            stimulus: "<font size='+2'>+</font>",
+            stimulus: "<font size='+3'>+</font>",
             choices: "NO_KEYS", 
             trial_duration: 1000,
             data: {"phase": "study"}
@@ -238,13 +238,13 @@
 
     testwords_1 = shuffle_variable(testwords_1);
     testwords_2 = shuffle_variable(testwords_2);
-    console.table(testwords_1);
-    console.table(testwords_2);
+    //console.table(testwords_1);
+    //console.table(testwords_2);
 
     ////// TEST PHASE //////
     var test_instructions_1 = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: "<font size='+2'>In this next phase you will attempt to recall one of the words you just viewed based on a short clue.<br><br>When you recall it, you will have a chance to type the word before proceeding to the next trial.<br><br>When you do not recall, you will indicate whether you feel it is on the tip of your tongue or truly forgotten.<br>You will then try to choose the most similar-feeling word from a short list.</font>",
+      stimulus: "<font size='+1'>In this next phase you will attempt to recall one of the words you just viewed based on a short clue.<br><br>When you recall it, you will have a chance to type the word before proceeding to the next trial.<br><br>When you do not recall, you will indicate whether you feel it is on the tip of your tongue or truly forgotten.<br>You will then try to choose the most similar-feeling word from a short list.</font>",
       prompt: "<font size='+1'><br><b>Press the space bar when you are ready to proceed to the first test phase.</b></font>",
       choices: " ",
    };
@@ -254,7 +254,7 @@
             {
                 type: jsPsychSurveyText,
                 questions: jsPsych.timelineVariable('question'),
-                preamble: "<font size='+2'><b>If you can recall which word from the list matches the following clue, type it below.<br/>If you cannot remember the word, click continue.</b></font>",
+                preamble: "<font size='+1'><b>If you can recall which word from the list matches the following clue, type it below.<br/>If you cannot remember the word, click continue.</b></font>",
                 data: {phase: 'recall', cue: jsPsych.timelineVariable('cue'), target: jsPsych.timelineVariable('target')}
             },
 
@@ -305,7 +305,7 @@
 
     var test_instructions_2 = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: "<font size='+2'>In this next phase you will attempt to recall one of the words you just viewed based on a short clue.<br><br>When you recall it, you will have a chance to type the word before proceeding to the next trial.<br><br>When you do not recall, you will indicate whether you feel it is on the tip of your tongue or truly forgotten.<br>You will then try to choose the most similar-feeling word from a short list.</font>",
+      stimulus: "<font size='+1'>In this next phase you will attempt to recall one of the words you just viewed based on a short clue.<br><br>When you recall it, you will have a chance to type the word before proceeding to the next trial.<br><br>When you do not recall, you will indicate whether you feel it is on the tip of your tongue or truly forgotten.<br>You will then try to choose the most similar-feeling word from a short list.</font>",
       prompt: "<font size='+1'><br><b>Press the space bar when you are ready to proceed to the second test phase.</b></font>",
       choices: " ",
    };
@@ -315,7 +315,7 @@
             {
                 type: jsPsychSurveyText,
                 questions: jsPsych.timelineVariable('question'),
-                preamble: "<font size='+2'><b>If you can recall which word from the list matches the following clue, type it below.<br/>If you cannot remember the word, click continue.</b></font>",
+                preamble: "<font size='+1'><b>If you can recall which word from the list matches the following clue, type it below.<br/>If you cannot remember the word, click continue.</b></font>",
                 data: {phase: 'recall', cue: jsPsych.timelineVariable('cue'), target: jsPsych.timelineVariable('target')}
             },
 
@@ -384,8 +384,8 @@
  
     var timeline = [];
 
-    //timeline.push(consent);            
-    //timeline.push(no_consent);         
+    timeline.push(consent);            
+    timeline.push(no_consent);         
     timeline.push(welcome);            
     timeline.push(study_instructions_1);       
     timeline.push(study_phase_1);     
@@ -396,7 +396,7 @@
     timeline.push(test_instructions_2);
     timeline.push(test_phase_2);         
     //timeline.push(send_data);          
-    //timeline.push(debrief);            
+    timeline.push(debrief);            
     
     jsPsych.run(timeline)
  </script>
