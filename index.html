@@ -69,8 +69,6 @@
       }
    });
 
-   // Experiment parameters
-   var subject_id = jsPsych.randomization.randomID(15);
    // get SONA ID
    var SONA_ID = getUrlParam('id','Empty');
 
@@ -81,10 +79,6 @@
       });
       return vars;
    };
-   
-   jsPsych.data.addProperties({
-      subject: subject_id, 
-   });
 
    function getUrlParam(parameter, defaultvalue){
       var urlparameter = defaultvalue;
@@ -100,6 +94,13 @@
          //to display data at the end:
          //jsPsych.data.displayData('json')
       }
+   });
+
+   // Experiment parameters
+   var subject_id = jsPsych.randomization.randomID(15);
+   
+   jsPsych.data.addProperties({
+      subject: subject_id, 
    });
 
    ////// PROCEDURE BEGINS //////
