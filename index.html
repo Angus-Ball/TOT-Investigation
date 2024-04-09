@@ -92,10 +92,10 @@
    const jsPsych = initJsPsych({
          //to display data at the end:
          //jsPsych.data.displayData('json')
-         /*on_finish: function() {
+         on_finish: function() {
             console.log(SONA_ID);
             window.location.href = "https://umanitobapsych.sona-systems.com/webstudy_credit.aspx?experiment_id=1660&credit_token=9685d728788a4addbf71a8024880db24&survey_code="+SONA_ID;
-      }*/
+      }
    });
 
    // Experiment parameters
@@ -383,8 +383,8 @@
          console.log(SONA_ID),
          firebase.database().ref(subject_id).set({
             data: jsPsych.data.get().values()
-         }),
-         window.location.href = "https://umanitobapsych.sona-systems.com/webstudy_credit.aspx?experiment_id=1660&credit_token=9685d728788a4addbf71a8024880db24&survey_code="+SONA_ID
+         })
+         //window.location.href = "https://umanitobapsych.sona-systems.com/webstudy_credit.aspx?experiment_id=1660&credit_token=9685d728788a4addbf71a8024880db24&survey_code="+SONA_ID
       }
     };
 
