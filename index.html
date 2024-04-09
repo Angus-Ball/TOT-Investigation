@@ -70,7 +70,6 @@
    });
 
    // get SONA ID
-   var SONA_ID = getUrlParam('id','Empty');
 
    function getUrlVars() {
       var vars = {};
@@ -87,6 +86,8 @@
       }
       return urlparameter;
    };
+
+   var SONA_ID = getUrlParam('id','Empty');
    
    const jsPsych = initJsPsych({
       on_finish: function() {
