@@ -90,9 +90,6 @@
    */
 
    //var SONA_ID = getUrlParam('id','Empty');
-   var SONA_ID = jsPsych.data.urlVariables().id;
-   console.log(jsPsych.data.urlVariables().id);
-   console.log(SONA_ID);
 
    const jsPsych = initJsPsych({
          //to display data at the end:
@@ -105,6 +102,10 @@
    // Experiment parameters
    var subject_id = jsPsych.randomization.randomID(15);
    console.log(subject_id);
+
+   var SONA_ID = jsPsych.data.urlVariables().id;
+   console.log(jsPsych.data.urlVariables().id);
+   console.log(SONA_ID);
    
    jsPsych.data.addProperties({
       subject: subject_id, 
