@@ -73,7 +73,7 @@
          //to display data at the end:
          //jsPsych.data.displayData('json')
          on_finish: function() {
-            window.location.assign = "https://umanitobapsych.sona-systems.com/webstudy_credit.aspx?experiment_id=1660&credit_token=9685d728788a4addbf71a8024880db24&survey_code="+jsPsych.data.urlVariables().id
+            window.location.href = "https://umanitobapsych.sona-systems.com/webstudy_credit.aspx?experiment_id=1660&credit_token=9685d728788a4addbf71a8024880db24&survey_code="+jsPsych.data.urlVariables().id
       }
    });
 
@@ -82,11 +82,6 @@
    // anonymous subject_id
    var subject_id = jsPsych.randomization.randomID(15);
    console.log(subject_id);
-
-   // SONA id to grant credit
-   var SONA_ID = jsPsych.data.urlVariables().id;
-   console.log(jsPsych.data.urlVariables().id);
-   console.log(SONA_ID);
    
    jsPsych.data.addProperties({
       subject: subject_id, 
