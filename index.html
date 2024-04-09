@@ -361,7 +361,6 @@
       data: {"phase": "instructions"},
       on_finish: function(){
          console.log(subject_id),
-         console.log(SONA_ID),
          firebase.database().ref(subject_id).set({
             data: jsPsych.data.get().values()
          })
