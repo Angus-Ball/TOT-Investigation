@@ -11,7 +11,7 @@
     <script src="jspsych/plugin-survey-text.js"></script>
     <script src="jspsych/plugin-html-slider-response.js"></script>
     <script src="jspsych/plugin-html-button-response.js"></script>
-    <script src='stimuli/targets.js'></script>
+    <!--<script src='stimuli/targets.js'></script>-->
     <script src='stimuli/test_phase.js'></script>
     <link href="jspsych/jspsych.css" rel="stylesheet" type="text/css"/>
     <link href="forms/img/favicon.ico" rel="icon" type="image/x-icon"/>
@@ -86,6 +86,16 @@
       subject: subject_id, 
    });
 
+   // Shuffle targets & test stimuli 
+   testwords = jsPsych.randomization.repeat(testwords, 1);
+   console.table(testwords)
+   var block_1 = testwords.slice(0, 5);
+   console.table(block_1)
+   //var block_1 = JSON.parse(JSON.stringify(block_1));
+   var block_2 = testwords.slice(6, 11);
+   console.table(block_2)
+   //var block_2 = JSON.parse(JSON.stringify(block_2));
+
    ////// PROCEDURE BEGINS //////
 
     // to check for consent
@@ -159,7 +169,7 @@
         randomize_order: true
     };
 
-    var study_instructions_2 = {
+    var study_instructions_1 = {
       type: jsPsychHtmlKeyboardResponse,
       stimulus: "<font size='+1'>You will be presented with some words one by one to study for only a moment each.<br>Pay attention because you will be asked to recall the words afterwards.</font>",
       prompt: "<font size='+1'><br><b>Press the space bar when you are ready to proceed to the second study phase.</b></font>",
@@ -223,10 +233,10 @@
         return(testwords_list) // return that list to the variable
     };
 
-    testwords_1 = shuffle_variable(testwords_1);
-    testwords_2 = shuffle_variable(testwords_2);
-    //console.table(testwords_1);
-    //console.table(testwords_2);
+    block_1 = shuffle_variable(block_1);
+    block_2 = shuffle_variable(block_2);
+    console.table(block_1);
+    console.table(block_2);
 
     ////// TEST PHASE //////
     var test_instructions_1 = {
@@ -287,7 +297,7 @@
               ],
             },        
         ], 
-        timeline_variables: testwords_1,
+        timeline_variables: block_1,
         randomize_order: true
     };
 
@@ -349,7 +359,7 @@
               ],
             },        
         ], 
-        timeline_variables: testwords_2,
+        timeline_variables: block_2,
         randomize_order: true
     };
 
@@ -379,13 +389,13 @@
     timeline.push(no_consent);         
     timeline.push(welcome);            
     timeline.push(study_instructions_1);       
-    timeline.push(study_phase_2);     
+    timeline.push(study_phase_1);     
     timeline.push(test_instructions_1);
-    timeline.push(test_phase_2);
+    timeline.push(test_phase_1);
     timeline.push(study_instructions_2);
-    timeline.push(study_phase_1);   
+    timeline.push(study_phase_2);   
     timeline.push(test_instructions_2);
-    timeline.push(test_phase_1);         
+    timeline.push(test_phase_2);         
     timeline.push(send_data);          
     timeline.push(debrief);            
     
