@@ -1,5 +1,5 @@
 // Study List Words
-var targets = [
+/*var targets = [
      {target: "<font size='+3'>abdicate</font>",     data: {"phase":"study"}},
      {target: "<font size='+3'>allocate</font>",     data: {"phase":"study"}},
      {target: "<font size='+3'>asbestos</font>",     data: {"phase":"study"}},
@@ -31,3 +31,4 @@ var block_2 = [
      {target: "<font size='+3'>javelin</font>",      data: {"phase":"study_2"}},
      {target: "<font size='+3'>tariff</font>",       data: {"phase":"study_2"}}
 ];
+*/
