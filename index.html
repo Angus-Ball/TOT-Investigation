@@ -81,18 +81,18 @@
    
    // anonymous subject_id
    var subject_id = jsPsych.randomization.randomID(15);
-   console.log(subject_id);
+   //console.log(subject_id);
    jsPsych.data.addProperties({
       subject: subject_id, 
    });
 
    // Shuffle targets & test stimuli 
    testwords = jsPsych.randomization.repeat(testwords, 1);
-   console.table(testwords);
+   //console.table(testwords);
    var block_1 = testwords.slice(0, 6);
-   console.table(block_1);
+   //console.table(block_1);
    var block_2 = testwords.slice(6, 12);
-   console.table(block_2);
+   //console.table(block_2);
 
    ////// PROCEDURE BEGINS //////
 
